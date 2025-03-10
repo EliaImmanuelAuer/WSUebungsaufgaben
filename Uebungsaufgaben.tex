@@ -8,6 +8,7 @@
 
 \usepackage{array}
 \usepackage{parskip}
+\def\arraystretch{1.5}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -65,10 +66,8 @@ Betrachten Sie den Wahrscheinlichkeitsraum $(\Omega, \mathbb{P})$ mit der Zufall
 \[
 \begin{array}{>{\displaystyle}l}
 \Omega = \{0, 1\}^3 \\
-\\
 \mathbb{P}: \mathcal{P}(\Omega) \to [0, 1], \\
 \mathbb{P}(A) = \frac{|A|}{8} \\
-\\
 X: \Omega \to \mathbb{R}, \\
 X \left( (a_i)_{i = 1}^3 \right) = \sum_{i = 1}^3 a_i
 \end{array}
@@ -85,20 +84,69 @@ Bestimmen Sie Folgendes:
 Erstens gilt:
 \[
 \begin{array}{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
-\mathbb{P}(X = 0) & = & \mathbb{P} \left( X = 0 \right) \\
+\mathbb{P}(X = 0) & = & \mathbb{P}(\{\omega \in \Omega \mid X(\omega) = 0\}) \\
+& = & \mathbb{P} \left( \left\{ (a_i)_{i = 1}^3 \in \{0, 1\}^3 \mid X \left( (a_i)_{i = 1}^3 \right) = 0 \right\} \right) \\
+& = & \mathbb{P} \left( \left\{ (a_i)_{i = 1}^3 \in \{0, 1\}^3 \;\middle|\; \sum_{i = 1}^3 a_i = 0 \right\} \right) \\
+& = & \mathbb{P} \left( \left\{ (a_i)_{i = 1}^3 \in \{0, 1\}^3 \mid \forall i \in \{1, 2, 3\}: a_i = 0 \right\} \right) \\
+& = & \mathbb{P}(\{(0, 0, 0)\}) \\
+& = & \frac{|\{(0, 0, 0)\}|}{8} \\
+& = & \frac{1}{8} \\
 \end{array}
 \]
+Zweitens gilt:
+\[
+\begin{array}{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
+\mathbb{E}[X] & = & \sum_{\omega \in \Omega} p(\omega) X(\omega) \\
+& = & \sum_{(a_i)_{i = 1}^3 \in \{0, 1\}^3} p \left( (a_i)_{i = 1}^3 \right) X \left( (a_i)_{i = 1}^3 \right) \\
+& = & \sum_{(a_i)_{i = 1}^3 \in \{0, 1\}^3} \frac{1}{8} X \left( (a_i)_{i = 1}^3 \right) \\
+& = & \frac{1}{8} \sum_{(a_i)_{i = 1}^3 \in \{0, 1\}^3} X \left( (a_i)_{i = 1}^3 \right) \\
+& = & \frac{1}{8} \sum_{(a_i)_{i = 1}^3 \in \{0, 1\}^3} \sum_{i = 1}^3 a_i \\
+& = & \frac{1}{8} \sum_{(a_i)_{i = 1}^3 \in \{0, 1\}^3} (a_1 + a_2 + a_3) \\
+& = & \frac{1}{8} \sum_{(a_i)_{i = 1}^3 \in \{(0, 0, 0), (0, 0, 1), (0, 1, 0), (0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1)\}} (a_1 + a_2 + a_3) \\
+& = & \frac{1}{8} (0 + 1 + 1 + 2 + 1 + 2 + 2 + 3) \\[5pt]
+& = & \frac{1}{8} 12 \\[5pt]
+& = & \frac{12}{8} \\[5pt]
+& = & \frac{3}{2} \\
+\end{array}
+\]
+Weiterhin haben wir:
+\[
+\begin{array}{>{\displaystyle}l}
+X^2: \Omega \to \mathbb{R}, \\
+X^2 \left( (a_i)_{i = 1}^3 \right) = \left( X \left( (a_i)_{i = 1}^3 \right) \right)^2 = \left( \sum_{i = 1}^3 a_i \right)^2 \\
+\end{array}
+\]
+Also haben wir:
+\[
+\begin{array}{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}
+\mathbb{E} \left[ X^2 \right] & = & \sum_{\omega \in \Omega} p(\omega) X^2 (\omega) \\
+& = & \sum_{(a_i)_{i = 1}^3 \in \{0, 1\}^3} p \left( (a_i)_{i = 1}^3 \right) X^2 \left( (a_i)_{i = 1}^3 \right) \\
+& = & \sum_{(a_i)_{i = 1}^3 \in \{0, 1\}^3} \frac{1}{8} X^2 \left( (a_i)_{i = 1}^3 \right) \\
+& = & \frac{1}{8} \sum_{(a_i)_{i = 1}^3 \in \{0, 1\}^3} X^2 \left( (a_i)_{i = 1}^3 \right) \\
+& = & \frac{1}{8} \sum_{(a_i)_{i = 1}^3 \in \{0, 1\}^3} \left( \sum_{i = 1}^3 a_i \right)^2 \\
+& = & \frac{1}{8} \sum_{(a_i)_{i = 1}^3 \in \{0, 1\}^3} (a_1 + a_2 + a_3)^2 \\
+& = & \frac{1}{8} \sum_{(a_i)_{i = 1}^3 \in \{(0, 0, 0), (0, 0, 1), (0, 1, 0), (0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1)\}} (a_1 + a_2 + a_3)^2 \\
+& = & \frac{1}{8} (0 + 1 + 1 + 4 + 1 + 4 + 4 + 9) \\[5pt]
+& = & \frac{1}{8} 24 \\[5pt]
+& = & \frac{24}{8} \\[5pt]
+& = & 3 \\
+\end{array}
+\]
+Damit gilt drittens:
+\[
+\operatorname{Var}[X] = \mathbb{E} \left[ X^2 \right] - \mathbb{E}[X]^2 = 3 - \left( \frac{3}{2} \right)^2 = 3 - \frac{9}{4} = \frac{12}{4} - \frac{9}{4} = \frac{3}{4}
+\]
 \end{solution}
+
+\newpage
 
 \begin{problem}
 Betrachten Sie den Wahrscheinlichkeitsraum $(\Omega, \mathbb{P})$ mit der Zufallsvariable $X$ gegeben durch:
 \[
 \begin{array}{>{\displaystyle}l}
 \Omega = \{0, 2\}^3 \\
-\\
 \mathbb{P}: \mathcal{P}(\Omega) \to [0, 1], \\
 \mathbb{P}(A) = \frac{|A|}{8} \\
-\\
 X: \Omega \to \mathbb{R}, \\
 X \left( (a_i)_{i = 1}^3 \right) = \sum_{i = 1}^3 \frac{1}{2} a_i
 \end{array}
@@ -120,10 +168,8 @@ Betrachten Sie den Wahrscheinlichkeitsraum $(\Omega, \mathbb{P})$ mit der Zufall
 \[
 \begin{array}{>{\displaystyle}l}
 \Omega = \{1, 2\}^3 \\
-\\
 \mathbb{P}: \mathcal{P}(\Omega) \to [0, 1], \\
 \mathbb{P}(A) = \frac{|A|}{8} \\
-\\
 X: \Omega \to \mathbb{R}, \\
 X \left( (a_i)_{i = 1}^3 \right) = \sum_{i = 1}^3 (a_i - 1)
 \end{array}
@@ -145,10 +191,8 @@ Betrachten Sie den Wahrscheinlichkeitsraum $(\Omega, \mathbb{P})$ mit der Zufall
 \[
 \begin{array}{>{\displaystyle}l}
 \Omega = \{x_1, x_2\}^3 \\
-\\
 \mathbb{P}: \mathcal{P}(\Omega) \to [0, 1], \\
 \mathbb{P}(A) = \frac{|A|}{8} \\
-\\
 X: \Omega \to \mathbb{R}, \\
 X \left( (a_i)_{i = 1}^3 \right) = \sum_{i = 1}^3 \begin{cases} 0, & a_i = x_1 \\ 1, & a_i = x_2 \\ \end{cases}
 \end{array}
