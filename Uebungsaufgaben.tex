@@ -1,0 +1,84 @@
+\documentclass{article}
+
+\usepackage[a4paper, margin=2cm]{geometry}
+
+\usepackage{microtype}
+
+\usepackage{enumitem}
+
+\usepackage{array}
+\usepackage{parskip}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\DeclareMathAlphabet{\mathbbx}{U}{bboldx}{m}{n}
+\newcommand{\mathbbxx}[1]{\pdfliteral{1 Tr 0.3 w}#1\pdfliteral{0 Tr 0 w}}
+
+\usepackage[unicode]{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage[nameinlink]{cleveref}
+
+\usepackage{etoolbox}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\declaretheoremstyle[
+  headformat=\NAME\NOTE,
+  notebraces={}{},
+  notefont=\bfseries
+]{mystyle}
+\makeatletter
+\newcommand{\HelperDeclareTheorem}[5]{
+  \declaretheorem[
+    name=#4,
+    refname={#2, #3},
+    Refname={#4, #5},
+    style=mystyle
+  ]{#1aux}
+  \newenvironment{#1}{\begin{#1aux}\leavevmode\par}{\end{#1aux}}
+}
+\newcommand{\HelperDeclareTheoremWithCounter}[5]{
+  \newcounter{#1}
+  \declaretheorem[
+    name=#4,
+    refname={#2, #3},
+    Refname={#4, #5},
+    style=mystyle
+  ]{#1aux}
+  \newenvironment{#1}{\stepcounter{#1}\begin{#1aux}[\csname the#1\endcsname]\leavevmode\par}{\end{#1aux}}
+}
+\makeatother
+\HelperDeclareTheoremWithCounter{problem}{aufgabe}{aufgaben}{Aufgabe}{Aufgaben}
+\HelperDeclareTheorem{solution}{lösung}{lösungen}{Lösung}{Lösungen}
+
+\begin{document}
+
+\begin{problem}
+Betrachten Sie den folgenden Wahrscheinlichkeitsraum:
+\[
+\begin{array}{>{\displaystyle}l}
+\Omega = \{0, 1\}^3 \\
+\end{array}
+\]
+\end{problem}
+
+\begin{solution}
+B
+\end{solution}
+
+\begin{problem}
+C
+\end{problem}
+
+\begin{solution}
+D
+\end{solution}
+
+\end{document}
