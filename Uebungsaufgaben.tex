@@ -405,7 +405,38 @@ Geben Sie eine Formel für $\mathbb{P}(B \mid A)$ in Abhängigkeit von $\mathbb{
 \end{problem}
 
 \begin{solution}
--
+\begin{enumerate}
+\item {
+Per Definition gilt
+\[
+\mathbb{P}(A \cap B) = \mathbb{P}(A \mid B) \cdot \mathbb{P}(B)
+\]
+}
+\item {
+Es gilt
+\[
+\mathbb{P}(B^C) = 1 - \mathbb{P}(B)
+\]
+}
+\item {
+Per Definition gilt
+\[
+\mathbb{P}(A \cap B^C) = \mathbb{P}(A \mid B^C) \cdot \mathbb{P}(B^C) = \mathbb{P}(A \mid B^C) \cdot (1 - \mathbb{P}(B))
+\]
+}
+\item {
+Da $A = (A \cap B) \sqcup (A \cap B^C)$ eine disjunkte Zerlegung ist, gilt
+\[
+\mathbb{P}(A) = \mathbb{P}(A \cap B) + \mathbb{P}(A \cap B^C) = \mathbb{P}(A \mid B) \cdot \mathbb{P}(B) + \mathbb{P}(A \mid B^C) \cdot (1 - \mathbb{P}(B))
+\]
+}
+\item {
+Per Definition gilt
+\[
+\mathbb{P}(B \mid A) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)} = \frac{\mathbb{P}(A \mid B) \cdot \mathbb{P}(B)}{\mathbb{P}(A \mid B) \cdot \mathbb{P}(B) + \mathbb{P}(A \mid B^C) \cdot (1 - \mathbb{P}(B))}
+\]
+}
+\end{enumerate}
 \end{solution}
 
 \end{document}
