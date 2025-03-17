@@ -378,7 +378,56 @@ Berechnen Sie $\mathbb{P}(H \mid S)$, d.h. die Wahrscheinlichkeit, dass der Math
 \end{problem}
 
 \begin{solution}
--
+\begin{enumerate}
+\item {
+Es gilt
+\[
+\mathbb{P}(H) = 75\% = \frac{3}{4}
+\]
+}
+\item {
+Es gilt
+\[
+\mathbb{P}(S \mid H) = 90\% = \frac{9}{10}
+\]
+}
+\item {
+Es gilt
+\[
+\mathbb{P}(S \mid H^C) = 10\% = \frac{1}{10}
+\]
+}
+\item {
+Per Definition gilt
+\[
+\mathbb{P}(S \cap H) = \mathbb{P}(S \mid H) \cdot \mathbb{P}(H) = \frac{9}{10} \cdot \frac{3}{4} = \frac{27}{40} = 67{,}5\%
+\]
+}
+\item {
+Es gilt
+\[
+\mathbb{P}(H^C) = 1 - \mathbb{P}(H) = 1 - \frac{3}{4} = \frac{1}{4} = 25\%
+\]
+}
+\item {
+Per Definition gilt
+\[
+\mathbb{P}(S \cap H^C) = \mathbb{P}(S \mid H^C) \cdot \mathbb{P}(H^C) = \frac{1}{10} \cdot \frac{1}{4} = \frac{1}{40} = 2{,}5\%
+\]
+}
+\item {
+Da $S = (S \cap H) \sqcup (S \cap H^C)$ eine disjunkte Zerlegung ist, gilt
+\[
+\mathbb{P}(S) = \mathbb{P}(S \cap H) + \mathbb{P}(S \cap H^C) = \frac{27}{40} + \frac{1}{40} = \frac{28}{40} = 70\%
+\]
+}
+\item {
+Per Definition gilt
+\[
+\mathbb{P}(H \mid S) = \frac{\mathbb{P}(S \cap H)}{\mathbb{P}(S)} = \frac{\frac{27}{40}}{\frac{28}{40}} = \frac{27}{28} \approx 96{,}429\%
+\]
+}
+\end{enumerate}
 \end{solution}
 
 \newpage
